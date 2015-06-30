@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-        <div id="main">
+<div id="main">
             <aside class="leftAside">
                 <h2>Что нужно для регистрации</h2>
                 <p>Что бы регистрация прошла успешно, заполните все поля и нажмите на
