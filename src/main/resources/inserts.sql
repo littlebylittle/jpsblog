@@ -79,11 +79,8 @@ VALUES
 );
 
 INSERT INTO `myblog`.`groupuser` (`name`, `users_login`) VALUES ('default', 'guest');
-
-
 INSERT INTO `myblog`.`groupuser_has_articles` (`groupuser_name`, `articles_id`) VALUES ('default', 1);
-
 INSERT INTO `myblog`.`groupuser_has_articles` (`groupuser_name`, `articles_id`) VALUES ('default', 2);
-
 INSERT INTO `myblog`.`groupuser_has_articles` (`groupuser_name`, `articles_id`) VALUES ('default', 3);
+commit;
 
