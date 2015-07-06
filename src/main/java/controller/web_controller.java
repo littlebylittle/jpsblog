@@ -15,15 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import session.ArticlesFacade;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "web_controller", urlPatterns = {"/article", "/registration"})
+@WebServlet(name = "web_controller", urlPatterns = {"/article", "/registration"}, loadOnStartup = 1)
 public class web_controller extends HttpServlet {
 	@EJB
 	private ArticlesFacade ariclesFacade;
 
 	@Override
 	public void init() throws ServletException {
-		super.init();
-		this.getServletContext().setAttribute("articles", );
+		this.getServletContext().setAttribute("articles", ariclesFacade.findAll());
 	}
 
 
@@ -37,7 +36,6 @@ public class web_controller extends HttpServlet {
 			case "/registration":
 				break;
 		}
-
         request.getRequestDispatcher("/WEB-INF/views" + userPath +".jsp").forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
