@@ -1,3 +1,5 @@
+CREATE SCHEMA myblog;
+
 CREATE  TABLE IF NOT EXISTS `myblog`.`articles` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NOT NULL COMMENT 'Заголовок статьи' ,
@@ -44,6 +46,6 @@ CREATE INDEX `fk_groupuser_has_articles_groupuser1` ON `myblog`.`groupuser_has_a
 ALTER TABLE `myblog`.`groupuser_has_articles`
 	ADD CONSTRAINT `fk_groupuser_has_articles_groupuser1`
     FOREIGN KEY (`groupuser_name` ) REFERENCES `myblog`.`groupuser` (`name` );
- ALTER TABLE `myblog`.`groupuser_has_articles`
+ALTER TABLE `myblog`.`groupuser_has_articles`
 	ADD CONSTRAINT `fk_groupuser_has_articles_articles1`
 	FOREIGN KEY (`articles_id` )  REFERENCES `myblog`.`articles` (`id` );
