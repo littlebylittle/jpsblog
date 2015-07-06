@@ -6,32 +6,40 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
+//import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import session.ArticlesFacade;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author igorm
- */
 @WebServlet(name = "web_controller", urlPatterns = {"/article", "/registration"})
 public class web_controller extends HttpServlet {
+	@EJB
+	private ArticlesFacade ariclesFacade;
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		this.getServletContext().setAttribute("articles", );
+	}
+
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String userPath = request.getServletPath();
-        if ("/article".equals(userPath)) {
-            // TODO: обработка запроса статьи
-        } else
-        if ("/registration".equals(userPath)){
-            //TODO: обработка запроса регистрации
-        }
-        
+        if (null != userPath) switch (userPath) {
+			case "/article":
+				break;
+			case "/registration":
+				break;
+		}
+
         request.getRequestDispatcher("/WEB-INF/views" + userPath +".jsp").forward(request, response);
-        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
