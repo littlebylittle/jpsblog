@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "ARTICLES")
+@Table(name = "ARTICLES", schema = "myblog")
 @XmlRootElement
 @NamedQueries({
 	@NamedQuery(name = "Articles.findAll", query = "SELECT a FROM Articles a"),
@@ -55,7 +55,7 @@ public class Articles implements Serializable {
     @Column(name = "DATE")
     @Temporal(TemporalType.TIMESTAMP)
 	private Date date;
-	
+
 	@JoinTable(name = "GROUPUSER_HAS_ARTICLES", joinColumns = {
     	@JoinColumn(name = "ARTICLES_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
     	@JoinColumn(name = "GROUPUSER_NAME", referencedColumnName = "NAME")})

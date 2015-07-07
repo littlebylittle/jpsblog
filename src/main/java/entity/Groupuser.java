@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "GROUPUSER")
+@Table(name = "GROUPUSER", schema = "myblog")
 @XmlRootElement
 @NamedQueries({
 	@NamedQuery(name = "Groupuser.findAll", query = "SELECT g FROM Groupuser g"),
