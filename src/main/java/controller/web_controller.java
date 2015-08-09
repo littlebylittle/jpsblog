@@ -5,7 +5,9 @@
  */
 package controller;
 
+import entity.Articles;
 import java.io.IOException;
+import java.util.Enumeration;
 import javax.ejb.EJB;
 //import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,13 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "web_controller", urlPatterns = {"/article", "/registration"}, loadOnStartup = 1)
 public class web_controller extends HttpServlet {
 	@EJB
-	private ArticlesFacade ariclesFacade;
+	private ArticlesFacade articlesFacade;
 
 	@Override
 	public void init() throws ServletException {
-		this.getServletContext().setAttribute("articles", ariclesFacade.findAll());
+		this.getServletContext().setAttribute("articles", articlesFacade.findAll());
 	}
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,6 +33,19 @@ public class web_controller extends HttpServlet {
         String userPath = request.getServletPath();
         if (null != userPath) switch (userPath) {
 			case "/article":
+				String id = null;
+				Enumeration<String> params = request.getParameterNames();
+				while(params.hasMoreElements()) {
+					String param = params.nextElement();
+					id = "id".equals(param) ? request.getParameter(param) : id;
+				}
+				try{
+					Articles article = articlesFacade.find(Integer.parseInt(id));
+					request.setAttribute("article", article);
+				 }catch(Exception e){
+					e.printStackTrace();
+				 }
+
 				break;
 			case "/registration":
 				break;

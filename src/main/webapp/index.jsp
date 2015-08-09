@@ -13,15 +13,14 @@
             <section>
 			<c:forEach var="article" items="${articles}">
 				 <article>
-				 <h1>${article.title}</h1>
-				 <div class="text-article">
-				 ${fn:substring(article.text, 0,300)} ...
-				 </div>
-				 <div class="fotter-article">
-				 <span class="read"><a href="article?id=${article.id}">
-							  Читать...</a></span>
-				 <span class="date-article">Дата статьи: ${article.date}</span>
-				 </div>
+					<h1>${article.title}</h1>
+					<div class="text-article">
+						${fn:substring(article.text, 0,300)} ...
+					</div>
+					<div class="fotter-article">
+					<span class="read"><a href="article?id=${article.id}">Читать...</a></span>
+					<span class="date-article">Дата статьи: ${article.date}</span>
+					</div>
 				 </article>
 			</c:forEach>
             </section>
