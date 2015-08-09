@@ -1,0 +1,17 @@
+HOW TO RUN:
+install glassfish4
+compile war file
+configure glassfist to using h2 pool
+	Resource Type: javax.sql.datasource
+	Datasource Classname: org.h2.jdbcx.JdbcDataSource (getted from h2-docs)
+Started h2
+	$ nohup java -jar ./h2-1.2.145.jar &
+Go to webserver page h2: localhost:
+	choose Generic H2(server)
+	Driver class: org.h2.Driver
+	jdbc-url:  jdbc:h2:tcp://localhost//usr/local/share/h2/h2
+	username: h2
+	password: admin
+Go to glassfish-webadmin-panel: choose -> JDBC -> JDBC Connection pools -> H2 -> `General` tab -> ping
+Copy compiled war-file into glassfish directory " glassfish -> .... -> domains -> .... ->  autodploy"
+Go to webserver-glassfish -> Applications -> App.name (IgorBlog) - run -> http-link;
