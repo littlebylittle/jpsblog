@@ -8,6 +8,7 @@
     <class>entity.Messages</class>
     <class>entity.Groupuser</class>
     <class>entity.Users</class>
+	<class>enentity.Contacts</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost//usr/local/share/h2/h2"/>

@@ -24,6 +24,21 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Users.findByLogin", query = "SELECT u FROM Users u WHERE u.login = :login"),
 	@NamedQuery(name = "Users.findByPass", query = "SELECT u FROM Users u WHERE u.pass = :pass")})
 public class Users implements Serializable {
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "login")
+	private Collection<Contacts> contactsCollection;
+	@Size(max = 2147483647)
+    @Column(name = "NAME")
+	private String name;
+	@Size(max = 2147483647)
+    @Column(name = "ADMIN")
+	private String admin;
+	@Size(max = 2147483647)
+    @Column(name = "REMARKS")
+	private String remarks;
+	@Column(name = "ID")
+	private Integer id;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "login")
+
 	private static final long serialVersionUID = 1L;
 	@Id
     @Basic(optional = false)
@@ -112,4 +127,44 @@ public class Users implements Serializable {
 		return "entity.Users[ login=" + login + " ]";
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@XmlTransient
+	public Collection<Contacts> getContactsCollection() {
+		return contactsCollection;
+	}
+
+	public void setContactsCollection(Collection<Contacts> contactsCollection) {
+		this.contactsCollection = contactsCollection;
+	}
 }
