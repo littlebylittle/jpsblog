@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -102,8 +103,12 @@ public class Articles implements Serializable {
 		this.text = text;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		try {
+			return new SimpleDateFormat("dd.MM.YYY").format(date);
+		} catch (NullPointerException e) {
+			return "Date unknown";
+		}
 	}
 
 	public void setDate(Date date) {
