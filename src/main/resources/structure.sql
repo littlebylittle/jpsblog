@@ -49,3 +49,16 @@ ALTER TABLE `myblog`.`groupuser_has_articles`
 ALTER TABLE `myblog`.`groupuser_has_articles`
 	ADD CONSTRAINT `fk_groupuser_has_articles_articles1`
 	FOREIGN KEY (`articles_id` )  REFERENCES `myblog`.`articles` (`id` );
+
+
+CREATE  TABLE `myblog`.`Contacts` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `login` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(45) NOT NULL ,
+  `value` VARCHAR(60) NOT NULL ,
+  PRIMARY KEY (`id`));
+
+CREATE INDEX `FK_Login_Contacts` ON `myblog`.`Contacts`  (`login` ASC);
+ALTER TABLE `myblog`.`Contacts` ADD CONSTRAINT  `value_UNIQUE` UNIQUE(`value` ASC);
+ALTER TABLE `myblog`.`Contacts` ADD CONSTRAINT `FK_Login_Contacts`  FOREIGN KEY (`login` )
+			REFERENCES `myblog`.`users` (`login` ) ON DELETE CASCADE ON UPDATE CASCADE;
